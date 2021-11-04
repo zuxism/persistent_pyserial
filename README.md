@@ -32,3 +32,10 @@ There is also a third option for line ending of sent strings.
 ser.py [port] [baud] [ending]
 ```
 Options are 'lf', 'cr', 'crlf'. Default is 'lf'.
+
+## Exiting
+
+For Windows ^C exits.
+
+For Linux use ^D.
+
