@@ -1,8 +1,10 @@
-# serial
+# Persistent Py Serial
 
 ## Description
 
 This is a cli serial port utility. It displays the output of chosen serial port to stdout and sends stdin back.
+
+## Persistency
 
 If the specified serial port is not available it will try to reconnect every few seconds until it is. If disconnected it will try to reconnect every few seconds.
 
