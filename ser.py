@@ -1,7 +1,6 @@
 import serial
 import time
 import datetime
-import easygui
 import sys
 import threading
 import getpass
@@ -22,16 +21,16 @@ if len(sys.argv) >= 3:
     port = sys.argv[1]
     baud = int(sys.argv[2])
 else:
-    port = easygui.enterbox('Enter COM port', 'COM port', 'COM10')
-    baud = str(easygui.enterbox('Enter BAUD rate', 'BAUD rate', '115200'))
+    port = input('Enter COM port: ')
+    baud = input('Enter BAUD rate: ')
 line_ending = '\n'
 if len(sys.argv) == 4:
     if sys.argv[3].lower() == 'lf':
-        line_ending = '\n'
+        line_ending = b'\n'
     if sys.argv[3].lower() == 'cr':
-        line_ending = '\r'
+        line_ending = b'\r'
     if sys.argv[3].lower() == 'crlf':
-        line_ending = '\r\n'
+        line_ending = b'\r\n'
     
 
 serial_opened = True
@@ -57,15 +56,17 @@ def read_input():
     global ser
     global serial_opened
     while True:
-        get = getpass.getpass(prompt='', stream=sys.stdin)
+        get = getpass.getpass(prompt='')
         input=f'{input}{get}'
         if len(input)>0:
-            color = pclr.RED
-            if serial_opened:
-                ser.write(input.encode('utf-8'))
-                ser.write(b'\n')
-                color = pclr.BLUE
+            color = pclr.BLUE if serial_opened else pclr.RED
             print(f"{color}{input}{pclr.NORMAL}")
+            if serial_opened:
+                try:
+                    ser.write(input.encode('utf-8'))
+                    ser.write(line_ending)
+                except:
+                    print(f"{pclr.RED}Unable to write{pclr.NORMAL}")
             input = ''
 
 read_input_thread = threading.Thread(target=read_input)
