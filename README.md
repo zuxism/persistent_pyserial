@@ -6,24 +6,26 @@ This is a cli serial port utility. It displays the output of chosen serial port 
 
 ## Persistency
 
-If the specified serial port is not available it will try to reconnect every few seconds until it is. If disconnected it will try to reconnect every few seconds.
+If the specified serial port is not available it will try to reconnect every few seconds until it is.
+
+If disconnected it will, again, try to reconnect every few seconds.
 
 ## CLI options
 
-Just running
-```fish
+Running
+```bash
 ser.py
 ```
-will give you gui prompts to enter port and baud rate.
+will prompts for port and baud rate.
 
 
-To avoid gui run
-```fish
+To avoid prompts run
+```bash
 ser.py [port] [baud]
 ```
 
 There is also a third option for line ending of sent strings.
-```fish
+```bash
 ser.py [port] [baud] [ending]
 ```
-Options are 'lf' / 'cr' / 'crlf'. Default is 'lf'.
+Options are 'lf', 'cr', 'crlf'. Default is 'lf'.
