@@ -16,13 +16,16 @@ Running
 ```bash
 ser.py
 ```
-will prompts for port and baud rate.
+will prompt for port and baud rate.
 
+---
 
 To avoid prompts run
 ```bash
 ser.py [port] [baud]
 ```
+
+---
 
 There is also a third option for line ending of sent strings.
 ```bash
