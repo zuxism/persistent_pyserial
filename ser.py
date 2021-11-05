@@ -64,7 +64,7 @@ def read_input():
             if serial_opened:
                 try:
                     ser.write(input.encode('utf-8'))
-                    ser.write(line_ending)
+                    ser.write(line_ending.encode('utf-8'))
                 except:
                     print(f"{pclr.RED}Unable to write{pclr.NORMAL}")
             input = ''
